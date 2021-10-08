@@ -1,0 +1,118 @@
+---
+title: "Quiz 1"
+author: "Woodward"
+date: "10/6/2021"
+output: html_document
+---
+---
+title: 'PSYC4960: Quiz 1'
+author: "Amanda Mae Woodward"
+date: "10/17/2020"
+output: html_document
+---
+Assignment: For this assignment, you will need to use the skills you have developed in the last two weeks. You **are** allowed to work with each other
+
+**Pt 1**
+1. Create a dataframe containing two columns: one with five super heroes, and one with your rating of how effective they are (1 = not effective; 10 = very effective)
+```{r}
+superheroes <- c("Wonderwoman", "Aquaman", "Captain Hindsight", "Spiderman", "Batman")
+efficacy <- c(10, 4, 1, 6, 5)
+superheroEfficacy <- cbind.data.frame(superheroes,efficacy)
+```
+
+2. What are the mean and standard deviation of your ratings?
+```{r}
+mean(efficacy)
+sd(efficacy)
+```
+
+3. Print just the row containing your highest ranked hero.
+```{r}
+superheroEfficacy[1,]
+```
+
+4. Write a logical statement to determine if your highest ranked superhero and second highest ranked hero have the same ranking
+```{r}
+superheroEfficacy[1,] == superheroEfficacy[4,]
+```
+
+
+**Part 2**
+5. Create a function that indicates whether a number is above 50 or 50 or under
+```{r}
+fiftyMark <- function(number){
+  if (number > 50) {print("Greater than 50")}
+  if (number < 50) {print("Less than 50")}
+  if (number == 50) {print("Equal to 50")}
+}
+```
+
+6. Test your function by inputting the number 19
+```{r}
+fiftyMark(19)
+```
+
+7. Create a vector containing the numbers 1 through 100.
+```{r}
+vector <- seq(1:100)
+```
+8. Modify your function to test whether all numbers in a vector are even or odd. (hint: this means you need to iterate through a list!)
+###I was trying to use is.integer to test if the iterations through the vector are divisible by 2 and still an integer to test if they're even but I can't figure out how to make it work####
+```{r}
+for (i in vector) {
+  evenIhope <- i %% 2
+  if (evenIhope == 0) {print("even")}
+  if (evenIhope == 1) {print("odd")}
+}
+```
+
+9. Test your new function using the vector in #6. 
+```{r}
+
+}
+
+```
+
+**Pt 3**
+All questions will use the diamonds dataset (in the ggplot2 library).
+
+10. Summarize the dataset.
+```{r}
+library(ggplot2)
+data(diamonds)
+summary(diamonds)
+```
+
+11. What type of variable is cut? How do you know? 
+```{r}
+class(diamonds$cut)
+```
+
+12. What type of variable is price? How do you know?
+```{r}
+class(diamonds$price)
+```
+
+
+13. Create a subset of the dataset that contains all diamonds with a VS1 clarity. 
+```{r}
+subset(diamonds, diamonds$clarity=="VS1")
+```
+
+14.How many diamonds are in this dataset?
+```{r}
+length(diamonds$clarity=="VS1")
+```
+
+15. Add a column to this subset indicating whether a diamonds' carat is small (less than the first quartile), average (between the first and third quartile), or large (greater than the third quartile).
+```{r}
+quant <- quantile(diamonds$carat, probs = c(.25, .5, .75))
+diamonds$size <- NA
+for (i in 1:length(diamonds$carat)){
+  if(diamonds$carat[i]<quant[[1]]){diamonds$size[i]<- "small"}
+  if (diamonds$carat[i]>quant[[1]] & diamonds$carat[i]<quant[[3]]){diamonds$size[i]<- "average"}
+  if (diamonds$carat[i]>quant[[3]]){diamonds$size[i]<- "large"}
+c}
+```
+
+
