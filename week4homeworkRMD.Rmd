@@ -1,0 +1,61 @@
+title: "PSY4960-Week 4 Assignment"
+author: "Amanda Mae Woodward"
+date: "9/22/2021"
+output: html_document
+---
+1.create a vector of 8 tv show names.
+```{r}
+tvShows <- c("new girl", "twin peaks", "30 rock","stranger things", "seinfeld", "downton abbey","arrested development","criminal minds")
+```
+
+2. What kind of data is this? explain how you know.
+This kind of data is character type, you can check the kind of data by using class(x):
+```{r}
+class(tvShows)
+```
+
+3. Change your vector to a factor. 
+```{r}
+as.factor(tvShows)
+```
+
+4. Create a function that multiplies numbers by 13. 
+```{r}
+timesThirteen <- function(number)(number*13)
+timesThirteen(2)
+```
+
+5. Create a dataframe that consists of one vector, which  contains the numbers 1-13
+```{r}
+thirteen <- seq(1:13)
+throughThirteen <- cbind.data.frame(thirteen)
+```
+
+6. Test your function from #4 by creating a new column in your dataframe from #5 that contains the output from your function for the numbers 1-13  (i.e. use the column you already made to test your function)
+```{r}
+throughThirteen$output <- NA
+throughThirteen$output <- timesThirteen(thirteen)
+View(throughThirteen)
+```
+
+7. Use a for loop to determine if the numbers in your column from #6 are even or odd. *Challenge* save this output to another column in your data frame. 
+```{r}
+for (i in 1:length(throughThirteen$output)){
+  Numbers <- i%%2
+  if (Numbers ==0) {print("even")}
+  if (Numbers ==1) {print("odd")}
+}
+```
+
+8. use if/else statements to create a column that indicates whether the numbers in the column created for #6 are "bigger" than 100 or "smaller" than 100. 
+```{r}
+
+throughThirteen$greaterOrlesser<-NA
+throughThirteen$greaterOrlesser<- for (i in 1:nrow(throughThirteen)){
+  if (i < 100) {throughThirteen$greaterOrlesser[i] == "smaller"}
+  if (i > 100) {throughThirteen$greaterOrlesser[i] == "bigger"}
+  if (i == 100) {throughThirteen$greaterOrlesser[i] == "equal to"}
+
+}
+```
+
