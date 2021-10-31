@@ -1,0 +1,52 @@
+---
+title: "Week 6- Graphing Assignment"
+author: "Amanda Mae Woodward"
+date: "10/18/2021"
+output: html_document
+---
+1. Open the starwars dataset from tidyverse
+```{r}
+library(tidyverse)
+data(starwars)
+View(starwars)
+```
+
+2.Create a graph of character's eye color. (Hint: pay attention to the class of data)
+```{r}
+library(Rmisc)
+library(ggplot2)
+starwars$eyecolor<- as.factor(starwars$eye_color)
+eyeColorgraph<- cbind.data.frame(starwars$eye_color)
+ggplot(eyeColorgraph, aes(eye_color))+geom_bar()
+View(eyecolorGraph)
+View(starwars)
+                                                    
+```
+
+
+3. Customize your graph to make it more presentable (consider axes, colors, themes)
+```{r}
+ggplot(eyecolorGraph, aes(eye_color))+geom_bar(color="gold",fill="maroon")
+ ```
+
+4. Create a graph of character's height versus mass.
+```{r}
+ggplot(starwars, aes(mass, height))+geom_point()
+
+```
+
+5. Customize this graph to make it more presentable.
+```{r}
+ggplot(starwars, aes(mass, height))+geom_point(color="blue")+xlab(label = "Character Mass") +ylab(label= "Character Height")
+```
+
+6. Create another graph of character's height and mass. Include sex as a third variable.  
+```{r}
+ggplot(starwars, aes(mass, height, color=sex)) +geom_point()
+```
+
+7. Customize this graph to make it more presentable. 
+```{r}
+ggplot(starwars, aes(mass, height, color=sex))+geom_point()+xlab(label = "Character Mass(In Kg)") +ylab(label= "Character Height (In inches)")
+```
+
