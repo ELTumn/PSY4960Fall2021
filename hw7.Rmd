@@ -1,0 +1,56 @@
+title: "PSY4960 Graphing Assignment"
+author: "Amanda Mae Woodward"
+date: "10/28/2021"
+output: html_document
+---
+1. Open the starwars dataset (located in tidyverse)
+```{r}
+library(tidyverse)
+data(starwars)
+```
+
+2. Create a scatter plot of character's height and mass. 
+```{r}
+library(ggplot2)
+ggplot(starwars, aes(height, mass))+geom_point()
+```
+
+
+2a. Change the color and shape of the points in your scatter plot. 
+```{r}
+ggplot(starwars, aes(height, mass))+geom_point(color="gold", fill="green")
+```
+
+
+3. Add Homeworld as a third variable to your scatterplot. 
+```{r}
+ggplot(starwars, aes(height, mass, color= homeworld))+geom_point()
+```
+
+
+3a. What do you notice about the graph? (e.g. describe what you see)
+There is a fat outliar. I think his name is jabba
+
+4. Make a boxplot of height. 
+```{r}
+ggplot(starwars, aes (height, mass, color=homeworld))+ geom_boxplot()
+```
+
+
+5. Make a boxplot of height for each species present in the data. 
+
+5a. change the appearance of your graph. 
+
+6. Using any variables in the starwars dataset, create a graph that uses a color pallette from viridis.
+```{r}
+colnames(starwars)
+library(viridis)
+ggplot(starwars, aes(height, mass))+geom_point()+scale_fill_viridis(option="magma")
+```
+
+
+7.6. Using any variables in the starwars dataset, create a graph that uses a color pallette from RColorBrewer.
+```{r}
+ggplot(starwars, aes(height, mass))+geom_point()+scale_color_brewer(palette+"GnBu")
+```
+
